@@ -1,0 +1,35 @@
+Initialize engine version: 5.4.5p5 (8c4c93a90556)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: AMD Radeon R9 200 / HD 7900 Series (ID=0x6798)
+    Vendor:   ATI
+    VRAM:     3052 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\Unity Projects\TerrainGeneration\TerrainGeneration\test_build2_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\Unity Projects\TerrainGeneration\TerrainGeneration\test_build2_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\Unity Projects\TerrainGeneration\TerrainGeneration\test_build2_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\Unity Projects\TerrainGeneration\TerrainGeneration\test_build2_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\Unity Projects\TerrainGeneration\TerrainGeneration\test_build2_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\Unity Projects\TerrainGeneration\TerrainGeneration\test_build2_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: D:\Unity Projects\TerrainGeneration\TerrainGeneration\test_build2_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading D:\Unity Projects\TerrainGeneration\TerrainGeneration\test_build2_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: D:\Unity Projects\TerrainGeneration\TerrainGeneration\test_build2_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading D:\Unity Projects\TerrainGeneration\TerrainGeneration\test_build2_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+- Completed reload, in  0.058 seconds
+Platform assembly: D:\Unity Projects\TerrainGeneration\TerrainGeneration\test_build2_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: D:\Unity Projects\TerrainGeneration\TerrainGeneration\test_build2_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 120Hz; virtual: 3840x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 0.719428 ms
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: e6c -> priority: 1 
+  Thread -> id: 3c90 -> priority: 1 
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.456706 ms
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 586.
+Total: 1.003220 ms (FindLiveObjects: 0.057343 ms CreateObjectMapping: 0.014043 ms MarkObjects: 0.858398 ms  DeleteObjects: 0.072557 ms)
+
