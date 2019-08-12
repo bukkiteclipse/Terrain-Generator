@@ -6,6 +6,7 @@ public class SceneTransition : MonoBehaviour {
 
 
     public Animator transitionAnim;
+    public Animator textAnim;
     public string sceneName;
 
 	// Use this for initialization
@@ -24,6 +25,7 @@ public class SceneTransition : MonoBehaviour {
     IEnumerator LoadScene()
     {
         transitionAnim.SetTrigger("end");
+        textAnim.SetTrigger("end");
         yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene(sceneName);
     }

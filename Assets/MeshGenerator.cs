@@ -5,7 +5,6 @@ using System.Collections;
 public class MeshGenerator : MonoBehaviour {
 
     Mesh mesh;
-    //Material material;
     public float[,] heightMap;
     public NoiseImageFieldGenerator noiseImageFieldGenerator;
     TerrainSettings terrainSettings;
@@ -16,10 +15,11 @@ public class MeshGenerator : MonoBehaviour {
     float meshPositionOffsetX;
     float meshPositionOffsetZ;
 
-    public float depth = 5f;
+    
     public int xSize = 50;
     public int zSize = 50;
     public float scale = 7f;
+    public float depth = 5f;
     public float pNoiseOffsetX = 0;
     public float pNoiseOffsetZ = 0;
 
@@ -42,7 +42,7 @@ public class MeshGenerator : MonoBehaviour {
 
         perlinNoise2D = new PerlinNoise2D();
 
-        CreateShape2();
+        CreateMeshShape();
         UpdateMesh();
     }
 
@@ -50,7 +50,7 @@ public class MeshGenerator : MonoBehaviour {
     {
         if(sizeUIChanged)
         {
-            CreateShape2();
+            CreateMeshShape();
             UpdateMesh();
             sizeUIChanged = false;
         }
@@ -89,7 +89,7 @@ public class MeshGenerator : MonoBehaviour {
         }
     }
 
-    IEnumerator CreateShape2_CoRoutine()
+    IEnumerator CreateMeshShape_CoRoutine()
     {
         // Create Vertex Field
         vertices = new Vector3[(xSize + 1) * (zSize + 1)];
@@ -135,7 +135,7 @@ public class MeshGenerator : MonoBehaviour {
         }     
     }
 
-    void CreateShape2()
+    void CreateMeshShape()
     {
         // Update MeshOffsets to draw Mesh centered in Worldspace
         meshPositionOffsetX = (float)xSize / 2;
@@ -174,14 +174,15 @@ public class MeshGenerator : MonoBehaviour {
         {
             for (int x = 0; x < xSize; x++)
             {
-
+                // Triangle at each Quads bottom left
                 triangles[tris + 0] = vert + 0;
                 triangles[tris + 1] = vert + xSize + 1;
                 triangles[tris + 2] = vert + 1;
-
+                // Triangle at each Quads top right
                 triangles[tris + 3] = vert + 1;
                 triangles[tris + 4] = vert + xSize + 1;
                 triangles[tris + 5] = vert + xSize + 2;
+                
 
                 vert++;
                 tris += 6;
@@ -198,7 +199,6 @@ public class MeshGenerator : MonoBehaviour {
         mesh.triangles = triangles;
         mesh.colors = vertexColors;
         mesh.RecalculateNormals();
-
 
         noiseImageFieldGenerator.updateOverviewHeightMap();
         updateUIValues();
@@ -221,7 +221,7 @@ public class MeshGenerator : MonoBehaviour {
             depth = terrainSettings.depth;
             pNoiseOffsetX = terrainSettings.xOffset;
             pNoiseOffsetZ = terrainSettings.zOffset;
-            CreateShape2();
+            CreateMeshShape();
             UpdateMesh();
             updateUIValues();
         }
@@ -230,19 +230,11 @@ public class MeshGenerator : MonoBehaviour {
 
     float CalculatePerlinNoiseHeight(int x, int z)
     {
-        /*
-        float xCoord = (float)x / (xSize/2) * scale + pNoiseOffsetX;
-        float zCoord = (float)z / (zSize/2) * scale + pNoiseOffsetZ;
+        float xCoordValue = (((float)x + pNoiseOffsetX) / xSize) * scale;
+        float zCoordValue = (((float)z + pNoiseOffsetZ) / zSize) * scale;
 
-        float perlinNoiseHeight = Mathf.PerlinNoise(xCoord, zCoord) * depth;
+        float perlinNoiseHeight = perlinNoise2D.Noise(xCoordValue, zCoordValue) * depth;
         return perlinNoiseHeight;
-        */
-        
-        float xCoord = (((float)x / xSize) + (pNoiseOffsetX / xSize)) * scale;
-        float zCoord = (((float)z / zSize) + (pNoiseOffsetZ / zSize)) * scale;
-
-        float ownPerlinNoiseHeight = perlinNoise2D.Noise(xCoord, zCoord) * depth;
-        return ownPerlinNoiseHeight;
     }
 
     private void OnDrawGizmos()
